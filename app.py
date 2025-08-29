@@ -33,9 +33,10 @@ params = {
     "passenger_count": pass_count
 }
 
-request = requests.get(url, params=params)
-response_json = request.json()
-prediction = response_json["fare"]
+if all([date, pick_long, pick_lat, drop_long, drop_lat, pass_count]):
+    request = requests.get(url, params=params)
+    response_json = request.json()
+    prediction = response_json["fare"]
 
-st.markdown(f'''Your taxi fare is : {prediction}
+    st.markdown(f'''Your taxi fare is : {prediction}
 ''')
